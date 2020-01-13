@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 GitHub Action for install npm dependencies with caching without any configuration
 
-npm install
+Run 'npm install' to install all dependencies
 
 ## Development server
 
