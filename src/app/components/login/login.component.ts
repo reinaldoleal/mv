@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formLogin  =  this.formBuilder.group({
-      login: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    if (this.authService.login(this.formLogin.controls.login.value)) {
+    if (this.authService.login(this.formLogin.controls.username.value)) {
       this.router.navigateByUrl('/dashboard');
     } else {
       this.isInvalidLogin = true;

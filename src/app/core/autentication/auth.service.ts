@@ -10,21 +10,21 @@ export class AuthService {
     private userService: UserService
   ) { }
 
-  public login(login: string) {
-    if (this.userService.getUserByLogin(login)) {
+  login(username: string) {
+    if (this.userService.getUserByLogin(username)) {
       localStorage.setItem('ACCESS_TOKEN', 'access_token');
-      localStorage.setItem('USER', login);
+      localStorage.setItem('USER', username);
       return true;
     }
 
     return false;
   }
 
-  public isLoggedIn() {
+  isLoggedIn() {
     return localStorage.getItem('ACCESS_TOKEN') !== null && localStorage.getItem('USER') != null;
   }
 
-  public logout() {
+  logout() {
     localStorage.removeItem('ACCESS_TOKEN');
     localStorage.removeItem('USER');
   }

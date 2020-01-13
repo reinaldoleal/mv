@@ -29,7 +29,7 @@ export class CreateComponent implements OnInit {
   createForm() {
     this.formUser = this.formBuilder.group({
       name: ['', Validators.required],
-      login: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
@@ -46,5 +46,4 @@ export class CreateComponent implements OnInit {
       this.router.navigateByUrl('/login');
     }
   }
-
 }

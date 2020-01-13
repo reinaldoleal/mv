@@ -22,13 +22,13 @@ export class UserService {
     return true;
   }
 
-  public getUserByLogin(login: string) {
+  public getUserByLogin(username: string) {
     console.log(this.users);
 
     if (this.users.length > 0) {
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < this.users.length; i++) {
-        if (login === this.users[i].login) {
+        if (username === this.users[i].username) {
           return this.users[i];
         }
       }
@@ -38,11 +38,9 @@ export class UserService {
   }
 
   public changeEmail(u: string, user: User) {
-    console.log(this.users);
-
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.users.length; i++) {
-      if (u === this.users[i].login) {
+      if (u === this.users[i].username) {
           this.users[i].email = user.email;
           return true;
       }

@@ -1,12 +1,6 @@
-{
-    "usuarios": [
-        {
-            "codigo": 1,
-            "nome": "REINALDO LEAL DE AZEVEDO FILHO",
-            "login": "reinaldoleal",
-            "email": "reinaldoleal@gmail.com",
-            "senha": "123456"
-        }
-    ],
-    "total": 1
-}
+[{
+    "name": "REINALDO LEAL DE AZEVEDO FILHO",
+    "username": "reinaldoleal",
+    "email": "reinaldoleal@gmail.com",
+    "password": "123456"
+}]

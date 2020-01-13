@@ -1,7 +1,7 @@
 {
     "user control": "Controle de Usuário",
     "name": "Nome",
-    "login": "Usuário",
+    "Username": "Usuário",
     "email": "e-mail",
     "password": "Senha",
     "enter": "Entrar",
@@ -11,7 +11,7 @@
     "save": "Salvar",
     "exit": "Sair",
     "name is required": "Necessário informar nome",
-    "login is required": "Necessário informar usuário",
+    "username is required": "Necessário informar usuário",
     "email is required": "Necessário informar e-mail",
     "password is required": "Necessário informar senha",
     "invalid email or password": "E-mail ou senha inválidos"

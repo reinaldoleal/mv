@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   createForm() {
     this.formUser = this.formBuilder.group({
       name: [{ value: this.user.name, disabled: true }],
-      login: [{ value: this.user.login, disabled: true }],
+      username: [{ value: this.user.username, disabled: true }],
       email: [this.user.email, Validators.required]
     });
   }
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
       return;
     }
 
-    if (this.userService.changeEmail(this.user.login, this.formUser.value)) {
+    if (this.userService.changeEmail(this.user.username, this.formUser.value)) {
       this.router.navigateByUrl('/login');
     }
   }

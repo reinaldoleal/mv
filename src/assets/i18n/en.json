@@ -1,7 +1,7 @@
 {
     "user control": "User Control",
     "name": "Name",
-    "login": "Login",
+    "username": "Username",
     "email": "e-mail",
     "password": "Password",
     "enter": "Enter",
@@ -11,7 +11,7 @@
     "save": "Save",
     "exit": "Exit",
     "name is required": "Name is required",
-    "login is required": "Login is required",
+    "username is required": "Username is required",
     "email is required": "e-mail is required",
     "password is required": "Password is required",
     "invalid email or password": "Invalid email or password"
