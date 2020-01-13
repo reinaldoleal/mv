@@ -21,16 +21,15 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private authService: AuthService,
     private formBuilder: FormBuilder
-
   ) { }
 
   ngOnInit() {
-    this.user = {
-      name: 'REINALDO LEAL DE AZEVEDO FILHO',
-      login: 'reinaldoleal',
-      email: 'reinaldoleal@gmail.com',
-      password: '123456'
-    };
+    this.user = this.userService.getUserByLogin(localStorage.getItem('USER'));
+
+    if (!this.user) {
+      this.router.navigateByUrl('/login');
+    }
+
     this.createForm();
   }
 
@@ -42,8 +41,7 @@ export class DashboardComponent implements OnInit {
     this.formUser = this.formBuilder.group({
       name: [{ value: this.user.name, disabled: true }],
       login: [{ value: this.user.login, disabled: true }],
-      email: [this.user.email, Validators.required],
-      password: [{ value: this.user.password, disabled: true }]
+      email: [this.user.email, Validators.required]
     });
   }
 
@@ -54,7 +52,7 @@ export class DashboardComponent implements OnInit {
       return;
     }
 
-    if (this.userService.changeEmail(this.formUser.value)) {
+    if (this.userService.changeEmail(this.user.login, this.formUser.value)) {
       this.router.navigateByUrl('/login');
     }
   }

@@ -7,31 +7,47 @@ import { User } from 'src/app/shared/models/user/user.model';
 })
 export class UserService {
 
-  private isLogged;
+  private user: User;
+  private users;
 
   constructor(
     private http: HttpClient
   ) {
-    this.isLogged = false;
-  }
-
-  public setLogged() {
-    this.isLogged = true;
-  }
-
-  public getLogged() {
-    return this.isLogged;
+    this.users = [];
   }
 
   public createUser(user: User) {
+    this.users.push(user);
+
     return true;
   }
 
-  public getUserByLogin(user: User) {
+  public getUserByLogin(login: string) {
+    console.log(this.users);
 
+    if (this.users.length > 0) {
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < this.users.length; i++) {
+        if (login === this.users[i].login) {
+          return this.users[i];
+        }
+      }
+    }
+
+    return false;
   }
 
-  public changeEmail(user: User) {
-    return true;
+  public changeEmail(u: string, user: User) {
+    console.log(this.users);
+
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.users.length; i++) {
+      if (u === this.users[i].login) {
+          this.users[i].email = user.email;
+          return true;
+      }
+    }
+
+    return false;
   }
 }

@@ -17,6 +17,9 @@
             <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
                 <div *ngIf="formControls.password.errors.required">{{ 'password is required' | translate }}</div>
             </div>
+            <div *ngIf="isSubmitted && isInvalidLogin" class="help-block">
+                {{ 'invalid email or password' | translate }}
+            </div>
         </div>
     </div>
 

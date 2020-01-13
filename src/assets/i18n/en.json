@@ -13,5 +13,6 @@
     "name is required": "Name is required",
     "login is required": "Login is required",
     "email is required": "e-mail is required",
-    "password is required": "Password is required"
+    "password is required": "Password is required",
+    "invalid email or password": "Invalid email or password"
 }

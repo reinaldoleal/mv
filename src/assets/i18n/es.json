@@ -13,5 +13,6 @@
     "name is required": "Se requiere nombre",
     "login is required": "Se requiere usuario",
     "email is required": "Se requiere e-mail",
-    "password is required": "Se requiere contraseña"
+    "password is required": "Se requiere contraseña",
+    "invalid email or password": "Correo electrónico o contraseña no válidos"
 }

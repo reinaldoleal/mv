@@ -11,6 +11,7 @@ import { AuthService } from '../../core/autentication/auth.service';
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   isSubmitted = false;
+  isInvalidLogin = false;
 
   constructor(
     private router: Router,
@@ -30,13 +31,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginIn() {
+    this.isInvalidLogin = false;
     this.isSubmitted = true;
 
     if (this.formLogin.invalid) {
       return;
     }
 
-    this.authService.login(this.formLogin.value);
-    this.router.navigateByUrl('/dashboard');
+    if (this.authService.login(this.formLogin.controls.login.value)) {
+      this.router.navigateByUrl('/dashboard');
+    } else {
+      this.isInvalidLogin = true;
+    }
   }
 }

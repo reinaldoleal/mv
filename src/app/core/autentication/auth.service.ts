@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../shared/models/user/user.model';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
-  public login(userInfo: User) {
-    localStorage.setItem('ACCESS_TOKEN', 'access_token');
+  public login(login: string) {
+    if (this.userService.getUserByLogin(login)) {
+      localStorage.setItem('ACCESS_TOKEN', 'access_token');
+      localStorage.setItem('USER', login);
+      return true;
+    }
+
+    return false;
   }
 
   public isLoggedIn() {
-    return localStorage.getItem('ACCESS_TOKEN') !== null;
-
+    return localStorage.getItem('ACCESS_TOKEN') !== null && localStorage.getItem('USER') != null;
   }
 
   public logout() {
     localStorage.removeItem('ACCESS_TOKEN');
+    localStorage.removeItem('USER');
   }
 }
