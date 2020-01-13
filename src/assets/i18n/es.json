@@ -1,0 +1,17 @@
+{
+    "user control": "Control de Usuario",
+    "name": "Nombre",
+    "login": "Usuario",
+    "email": "e-mail",
+    "password": "Contraseña",
+    "enter": "Entrar",
+    "back": "Regresa",
+    "dont have an account yet?": "¿Aún no tienes una cuenta?",
+    "sign up here": "Registrate aquí",
+    "save": "Guardar",
+    "exit": "Salida",
+    "name is required": "Se requiere nombre",
+    "login is required": "Se requiere usuario",
+    "email is required": "Se requiere e-mail",
+    "password is required": "Se requiere contraseña"
+}

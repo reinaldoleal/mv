@@ -1,0 +1,10 @@
+<div class="head row">
+    <div class="col-sm-10">
+        <header>{{ 'user control' | translate }}</header>
+    </div>
+    <div class="col-sm-2 mt-4">
+        <img src="../../../assets/img/gb.svg" [ngClass]="{'img-selected': currentLang === 'en'}" class="rounded float-right" height="32" width="42" (click)="changeLanguage('en')">
+        <img src="../../../assets/img/es.svg" [ngClass]="{'img-selected': currentLang === 'es'}" class="rounded float-right" height="32" width="42" (click)="changeLanguage('es')">
+        <img src="../../../assets/img/br.svg" [ngClass]="{'img-selected': currentLang === 'pt-br'}" class="rounded float-right" height="32" width="42" (click)="changeLanguage('pt-br')">
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{
+    "user control": "User Control",
+    "name": "Name",
+    "login": "Login",
+    "email": "e-mail",
+    "password": "Password",
+    "enter": "Enter",
+    "back": "Back",
+    "dont have an account yet?": "Don´t have an account yet?",
+    "sign up here": "Sign up here",
+    "save": "Save",
+    "exit": "Exit",
+    "name is required": "Name is required",
+    "login is required": "Login is required",
+    "email is required": "e-mail is required",
+    "password is required": "Password is required"
+}
