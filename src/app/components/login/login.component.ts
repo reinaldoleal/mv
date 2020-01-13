@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/autentication/auth.service';
+import { User } from 'src/app/shared/models/user/user.model';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,11 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    if (this.authService.login(this.formLogin.controls.username.value)) {
+    const user = this.authService.login(this.formLogin.controls.username.value);
+
+    console.log(user);
+
+    if (user && user['password'] === this.formLogin.controls.password.value) {
       this.router.navigateByUrl('/dashboard');
     } else {
       this.isInvalidLogin = true;

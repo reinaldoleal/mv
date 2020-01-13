@@ -7,7 +7,6 @@ import { User } from 'src/app/shared/models/user/user.model';
 })
 export class UserService {
 
-  private user: User;
   private users;
 
   constructor(

@@ -11,10 +11,11 @@ export class AuthService {
   ) { }
 
   login(username: string) {
-    if (this.userService.getUserByLogin(username)) {
+    const user = this.userService.getUserByLogin(username);
+    if (user) {
       localStorage.setItem('ACCESS_TOKEN', 'access_token');
       localStorage.setItem('USER', username);
-      return true;
+      return user;
     }
 
     return false;
