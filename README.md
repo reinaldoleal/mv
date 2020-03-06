@@ -44,15 +44,17 @@ See also:
 
 ## Getting started
 
+## Install JSON Server globally
+
 Install JSON Server 
 
-```
-npm install -g json-server
+Run `npm install -g json-server`
 
 Start JSON Server
 
-```bash
-json-server --watch db.json
+## Running in the application folder
+
+Run `json-server --watch src/app/shared/mock/db.json`
 
 ## Further help
 
