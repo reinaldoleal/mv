@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "usuario-app": {
+    "cnes-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/usuario-app",
+            "outputPath": "dist/cnes-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,8 +24,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           },
@@ -71,22 +72,22 @@
         },
         "serve": {
           "mock": {
-            "browserTarget": "usuario-app:build:mock"
+            "browserTarget": "cnes-app:build:mock"
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "usuario-app:build"
+            "browserTarget": "cnes-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "usuario-app:build:production"
+              "browserTarget": "cnes-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "usuario-app:build"
+            "browserTarget": "cnes-app:build"
           }
         },
         "test": {
@@ -101,7 +102,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/sweetalert2/dist/sweetalert2.css"
             ],
             "scripts": []
           }
@@ -123,15 +127,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "usuario-app:serve"
+            "devServerTarget": "cnes-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "usuario-app:serve:production"
+              "devServerTarget": "cnes-app:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "usuario-app"
+  "defaultProject": "cnes-app"
 }

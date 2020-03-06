@@ -1,12 +1,12 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import * as users from '../../shared/mock/users.json';
+import * as companies from '../../shared/mock/db.json';
 
 const urls = [
     {
-        url: 'https://my-json-server.typicode.com/reinaldoleal/mv/boards',
-        json: users
+        url: 'http://localhost:3000/empresas',
+        json: companies
     }
 ];
 

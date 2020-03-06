@@ -1,70 +1,86 @@
-<div class="ml-2 mt-1 mr-2">
-    <h1 class="page-header clearfix">
-        <div class="form-row">
-            <div class="form-group col-md-11">
-                <span>Empresas</span>
+<div *ngIf="empresa">
+    <div class="ml-2 mt-1 mr-2">
+        <h1 class="page-header clearfix">
+            <div class="form-row">
+                <div class="form-group col-md-11">
+                    <span>{{ 'company' | translate }}</span>
+                </div>
+                <div class="form-group col-md-1">
+                    <a href="#" [routerLink]="['./../', 'new']" routerLinkActive="active" class="btn btn-primary">
+                        <span>{{ 'add' | translate }}</span>
+                    </a>
+                </div>
             </div>
-            <div class="form-group col-md-1">
-                <a href="#" [routerLink]="['./../', 'new']" routerLinkActive="active" class="btn btn-primary">
-                    <span>Adicionar</span>
+        </h1>
+    </div>
+    <div class="mt-2">
+        <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+            <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false" activeIds="toggle-1">
+                <ngb-panel id="toggle-1">
+                    <ng-template ngbPanelTitle>
+                        {{ 'main data' | translate }} 
+                        <span class="label-obrg">*</span>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="">CNES
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <input [disabled]="id !== 'new'" maxlength="14" [(ngModel)]="empresa.cnes" name="cnes" type="text" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': cnes.invalid && cnes.touched,  'is-valid'  : !cnes.invalid && cnes.touched }"
+                                    #cnes="ngModel">
+                                <div *ngIf="cnes.invalid && cnes.touched" class="invalid-feedback">
+                                    <div *ngIf="cnes.errors && cnes.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="">{{ 'company name' | translate }}
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <input maxlength="100" [(ngModel)]="empresa.noEmpresarial" name="noEmpresarial" type="text" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': noEmpresarial.invalid && noEmpresarial.touched,  'is-valid'  : !noEmpresarial.invalid && noEmpresarial.touched }"
+                                    #noEmpresarial="ngModel">
+                                <div *ngIf="noEmpresarial.invalid && noEmpresarial.touched" class="invalid-feedback">
+                                    <div *ngIf="noEmpresarial.errors && noEmpresarial.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">{{ 'name of fantasy' | translate }}</label>
+                                <input maxlength="100" [(ngModel)]="empresa.noFantasia" name="noFantasia" type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="">{{ 'type' | translate }}</label>
+                                <input maxlength="2" [(ngModel)]="empresa.natJuridica" name="natJuridica" type="number" class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">{{ 'state' | translate }}</label>
+                                <select class="form-control form-control-sm" [(ngModel)]="empresa.uf" name="uf">
+                                    <option *ngFor="let estado of estados" [value]="estado.sigla">{{estado.nome}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">{{ 'county name' | translate }}</label>
+                                <input maxlength="100" [(ngModel)]="empresa.noMunicipio" name="noMunicipio" type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+            <div class="text-right mt-4 mr-4">
+                <a class="btn btn-secondary btn-secondary-sm mr-1" [routerLink]="['../']">
+                    <span class="fa fa-angle-left" aria-hidden="true"> {{ 'back' | translate }}</span>
                 </a>
+                <button type="submit" [disabled]="!editForm.form.valid" class="btn btn-primary btn-primary-sm" [routerLink]="['./']">
+                    {{ 'save' | translate }}
+                </button>
             </div>
-        </div>
-    </h1>
-</div>
-<div class="mt-2">
-    <form #editForm="ngForm" (ngSubmit)="onSubmit()">
-        <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false" activeIds="toggle-1">
-            <ngb-panel id="toggle-1">
-                <ng-template ngbPanelTitle>
-                    Dados Principal
-                    <span class="label-obrg">*</span>
-                    <span class="fa fa-minus" aria-hidden="true"></span>
-                    <span class="fa fa-plus" aria-hidden="true"></span>
-                </ng-template>
-                <ng-template ngbPanelContent>
-                    <div class="form-row">
-                        <div class="form-group col-md-2">
-                            <label for="">CNPJ
-                                <span class="label-obrg">*</span>
-                            </label>
-                            <input [disabled]="key !== 'new'" maxlength="14" [(ngModel)]="empresa.cnpj" name="cnpj" type="text" class="form-control form-control-sm"
-                                required [ngClass]="{ 'is-invalid': cnpj.invalid && cnpj.touched,  'is-valid'  : !cnpj.invalid && cnpj.touched }"
-                                #cnpj="ngModel">
-                            <div *ngIf="cnpj.invalid && cnpj.touched" class="invalid-feedback">
-                                <div *ngIf="cnpj.errors && cnpj.errors.required">
-                                    Campo é obrigatório
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="">Razão Social
-                                <span class="label-obrg">*</span>
-                            </label>
-                            <input maxlength="100" [(ngModel)]="empresa.razaoSocial" name="razaoSocial" type="text" class="form-control form-control-sm"
-                                required [ngClass]="{ 'is-invalid': razaoSocial.invalid && razaoSocial.touched,  'is-valid'  : !razaoSocial.invalid && razaoSocial.touched }"
-                                #razaoSocial="ngModel">
-                            <div *ngIf="razaoSocial.invalid && razaoSocial.touched" class="invalid-feedback">
-                                <div *ngIf="razaoSocial.errors && razaoSocial.errors.required">
-                                    Campo é obrigatório
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="">Nome de Fantasia</label>
-                            <input maxlength="100" [(ngModel)]="empresa.nomeFantasia" name="nomeFantasia" type="text" class="form-control form-control-sm">
-                        </div>
-                    </div>
-                </ng-template>
-            </ngb-panel>
-        </ngb-accordion>
-        <div class="text-right mt-4 mr-4">
-            <a class="btn btn-secondary btn-secondary-sm mr-2" [routerLink]="['../']">
-                <span class="fa fa-angle-left" aria-hidden="true">Voltar</span>
-            </a>
-            <button type="submit" [disabled]="!editForm.form.valid" class="btn btn-primary btn-primary-sm" [routerLink]="['./']">
-                Salvar
-            </button>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

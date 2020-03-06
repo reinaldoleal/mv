@@ -12,22 +12,44 @@ export class EmpresaService {
   ) { }
 
   public getAll() {
-    return this.http.get('https://my-json-server.typicode.com/reinaldoleal/mv/boards');
+    return this.http.get('http://localhost:3000/empresas');
   }
 
-  public getEmpresa(cnpj: string) {
-    return this.http.get('https://my-json-server.typicode.com/reinaldoleal/mv/boards/' + cnpj);
+  public getEmpresa(id: string) {
+    return this.http.get('http://localhost:3000/empresas/' + id);
+  }
+
+  public getEmpresasByFilter(params) {
+    let filter;
+
+    if (params.uf) {
+      filter = 'uf=' + params.uf;
+    }
+
+    if (params.natJuridica) {
+      if (filter !== '') {
+        filter = filter + '&';
+      }
+
+      filter = filter + 'natJuridica=' + params.natJuridica;
+    }
+
+    if (filter) {
+      return this.http.get('http://localhost:3000/empresas?' + filter);
+    } else {
+      return this.getAll();
+    }
   }
 
   public createEmpresa(empresa: Empresa) {
-    return this.http.post('https://my-json-server.typicode.com/reinaldoleal/mv/boards', empresa);
+    return this.http.post('http://localhost:3000/empresas', empresa);
   }
 
   public updateEmpresa(empresa: Empresa, key: string) {
-    return this.http.put('https://my-json-server.typicode.com/reinaldoleal/mv/boards/' + empresa.cnpj, empresa);
+    return this.http.put('http://localhost:3000/empresas/' + empresa.id, empresa);
   }
 
-  public deleteEmpresa(cnpj: string) {
-    return this.http.delete('https://my-json-server.typicode.com/reinaldoleal/mv/boards/' + cnpj);
+  public deleteEmpresa(id: string) {
+    return this.http.delete('http://localhost:3000/empresas/' + id);
   }
 }

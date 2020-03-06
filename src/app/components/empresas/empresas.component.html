@@ -2,11 +2,11 @@
     <h1 class="page-header clearfix">
         <div class="form-row">
             <div class="form-group col-md-11">
-                <span>Empresas</span>
+                <span>{{ 'company' | translate }}</span>
             </div>
             <div class="form-group col-md-1">
-                <a href="#" [routerLink]="['./', 'new']" routerLinkActive="active" class="btn btn-primary">
-                    <span>Adicionar</span>
+                <a href="#" [routerLink]="['./', 'new']" routerLinkActive="active" class="btn btn-primary mt-3 mr-2 pull-right">
+                    <span>{{ 'add' | translate }}</span>
                 </a>
             </div>
         </div>
@@ -17,41 +17,46 @@
         <div class="card-header">
             <div class="form-row align-items-center">
                 <div class="col-sm-1 mt-1 mb-0">
-                    <label for="inlineFormInputName">Filtrar por:</label>
+                    <label for="">{{ 'filter by' | translate }}:</label>
                 </div>
                 <div class="col-sm-2">
-                    <input maxlength="14" type="text" [(ngModel)]="buscarPorCNPJ" name="buscarPorCNPJ" class="form-control form-control-sm" placeholder="CNPJ">
+                    <input maxlength="2" type="number" [(ngModel)]="buscarPorTipo" name="buscarPorTipo" class="form-control form-control-sm" placeholder="{{ 'type' | translate}}">
                 </div>
-                <div class="col-sm-4">
-                    <input maxlength="100" type="text" [(ngModel)]="buscarPorRazaoSocial" name="buscarPorRazaoSocial" class="form-control form-control-sm" placeholder="Razão Social">
+                <div class="col-sm-2">
+                    <input maxlength="2" type="text" [(ngModel)]="buscarPorEstado" name="buscarPorEstado" class="form-control form-control-sm" placeholder="{{ 'state' | translate }}">
                 </div>
-                <div class="col-sm-2 offset-sm-3 text-right">
-                    <button type="buttton" (click)="buscarEmpresas()" class="btn btn-primary btn-primary-sm">
-                        <span class="fa fa-search"></span>Filtrar</button>
+                <div class="col-sm-2 offset-sm-5 text-right">
+                    <button type="buttton" (click)="getEmpresasByFilter()" class="btn btn-primary btn-primary-sm">
+                        <span class="fa fa-search"></span> {{ 'filter' | translate }}</button>
                 </div>
             </div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-responsive-md">
                 <thead class="">
-                    <th scope="col" class="text-nowrap">CNPJ</th>
-                    <th scope="col" class="text-nowrap">Razão Social</th>
-                    <th scope="col" class="text-nowrap w-2"></th>
+                    <th scope="col" class="text-nowrap">{{ 'company name' | translate }}</th>
+                    <th scope="col">CNES</th>
+                    <th scope="col">{{ 'type' | translate }}</th>
+                    <th scope="col">{{ 'state' | translate }}</th>
+                    <th scope="col" class="w-2"></th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let empresa of empresas$ | async">
-                        <td class="text-nowrap">{{empresa.cnpj}}</td>
-                        <td class="text-nowrap">{{empresa.razaoSocial}}</td>
-                        <td class="text-nowrap pull-right mr-2">
-                            <a href="#" [routerLink]="['./', empresa.key]" routerLinkActive="active" class="text-secondary">
+                    <tr *ngFor="let empresa of empresas | paginate: { itemsPerPage: 20, currentPage: paginaAtual }; let i = index">
+                        <td class="text-nowrap">{{empresa.noEmpresarial}}</td>
+                        <td>{{empresa.cnes}}</td>
+                        <td>{{empresa.natJuridica}}</td>
+                        <td>{{empresa.uf}}</td>
+                        <td class="pull-right mr-2">
+                            <a href="#" [routerLink]="['./', empresa.id]" routerLinkActive="active" class="text-secondary">
                                 <span class="fa fa-pencil" aria-hidden="true"></span>
                             </a>
-                            <a href="#" [routerLink]="['./']" (click)="delete(empresa.key)" class="text-secondary ml-2">
+                            <a href="#" [routerLink]="['./']" (click)="confirm(empresa.id)" class="text-secondary ml-2">
                                 <span class="fa fa-trash" aria-hidden="true"></span>
                             </a>
                         </td>
                     </tr>
                 </tbody>
+                <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="{{ 'previous' | translate}}" nextLabel="{{ 'next' | translate }}"></pagination-controls>
             </table>
         </div>
     </div>

@@ -1,4 +1,17 @@
 {
+    "cnes": "Registro nacional de establecimientos de salud",
+    "company": "Empresa",
+    "company name": "Razón Social",
+    "name of fantasy": "Nombre de Fantasía",
+    "add": "Añadir",
+    "filter": "Filtro",
+    "filter by": "Filtrar por",
+    "the field is required": "El campo es obligatorio",
+    "main data": "Datos principales",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "type": "Tipo",
+    "state": "Estado",
     "user control": "Control de Usuario",
     "name": "Nombre",
     "username": "Usuario",
@@ -14,5 +27,8 @@
     "username is required": "Se requiere usuario",
     "email is required": "Se requiere e-mail",
     "password is required": "Se requiere contraseña",
-    "invalid email or password": "Correo electrónico o contraseña no válidos"
+    "invalid email or password": "Correo electrónico o contraseña no válidos",
+    "yes": "Si",
+    "no": "No",
+    "county name": "Nombre del condado"
 }

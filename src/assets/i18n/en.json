@@ -1,4 +1,17 @@
 {
+    "cnes": "National Registry of Health Facilities",
+    "company": "Company",
+    "company name": "Company Name",
+    "name of fantasy": "Name of Fantasy",
+    "add": "Add",
+    "filter": "Filter",
+    "filter by": "Filter by",
+    "the field is required": "The field is required",
+    "main data": "Main data",
+    "previous": "Previous",
+    "next": "Next",
+    "type": "Type",
+    "state": "State",
     "user control": "User Control",
     "name": "Name",
     "username": "Username",
@@ -14,5 +27,8 @@
     "username is required": "Username is required",
     "email is required": "e-mail is required",
     "password is required": "Password is required",
-    "invalid email or password": "Invalid email or password"
+    "invalid email or password": "Invalid email or password",
+    "yes": "Yes",
+    "no": "No",
+    "county name": "County Name"
 }

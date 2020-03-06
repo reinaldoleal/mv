@@ -13,20 +13,17 @@ import {
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './core/header/header.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserService } from './core/services/user/user.service';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { EmpresaEditComponent } from './components/empresas/edit/edit.component';
-import { CreateComponent } from './components/create/create.component';
-import { AuthGuard } from './core/guards/auth.guard';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { environment } from '../environments/environment';
 
 import { HttpRequestInterceptor } from './core/interceptors/interceptor';
 import { HttpMockRequestInterceptor } from './core/interceptors/interceptor.mock';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export const isMock = environment.mock;
 
@@ -37,32 +34,16 @@ const appRoutes: Routes = [
     redirectTo: 'empresa'
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'create',
-    component: CreateComponent
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'empresa',
-    component: EmpresasComponent,
-    canActivate: [AuthGuard]
+    component: EmpresasComponent
   },
   {
     path: 'empresa/:id',
-    component: EmpresaEditComponent,
-    canActivate: [AuthGuard]
+    component: EmpresaEditComponent
   },
   {
     path: 'empresa/new',
-    component: EmpresaEditComponent,
-    canActivate: [AuthGuard]
+    component: EmpresaEditComponent
   }
 ];
 
@@ -73,10 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HeaderComponent,
-    DashboardComponent,
-    CreateComponent,
     EmpresasComponent,
     EmpresaEditComponent
   ],
@@ -87,6 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    AngularFontAwesomeModule,
+    NgxPaginationModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -94,13 +74,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     })
-  ],
-  providers: [UserService, AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: isMock ? HttpMockRequestInterceptor : HttpRequestInterceptor,
-      multi: true
-    }
   ],
   bootstrap: [AppComponent]
 })
