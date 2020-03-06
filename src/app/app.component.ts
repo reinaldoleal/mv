@@ -20,7 +20,7 @@ export class AppComponent {
     this.translate.setDefaultLang('pt-br');
     this.translate.use('pt-br');
 
-    http.get<[User]>('https://jsonplaceholder.typicode.com/users').subscribe( res => {
+    http.get<[User]>('https://my-json-server.typicode.com/reinaldoleal/mv/boards').subscribe( res => {
         this.users = res;
 
         console.log(this.users);

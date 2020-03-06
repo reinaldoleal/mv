@@ -43,10 +43,10 @@ export class LoginComponent implements OnInit {
 
     console.log(user);
 
-    if (user && user['password'] === this.formLogin.controls.password.value) {
-      this.router.navigateByUrl('/dashboard');
-    } else {
-      this.isInvalidLogin = true;
-    }
+    // if (user && user['password'] === this.formLogin.controls.password.value) {
+    this.router.navigateByUrl('/dashboard');
+    // } else {
+      // this.isInvalidLogin = true;
+    // }
   }
 }

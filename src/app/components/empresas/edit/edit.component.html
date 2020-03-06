@@ -1,0 +1,70 @@
+<div class="ml-2 mt-1 mr-2">
+    <h1 class="page-header clearfix">
+        <div class="form-row">
+            <div class="form-group col-md-11">
+                <span>Empresas</span>
+            </div>
+            <div class="form-group col-md-1">
+                <a href="#" [routerLink]="['./../', 'new']" routerLinkActive="active" class="btn btn-primary">
+                    <span>Adicionar</span>
+                </a>
+            </div>
+        </div>
+    </h1>
+</div>
+<div class="mt-2">
+    <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+        <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false" activeIds="toggle-1">
+            <ngb-panel id="toggle-1">
+                <ng-template ngbPanelTitle>
+                    Dados Principal
+                    <span class="label-obrg">*</span>
+                    <span class="fa fa-minus" aria-hidden="true"></span>
+                    <span class="fa fa-plus" aria-hidden="true"></span>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="">CNPJ
+                                <span class="label-obrg">*</span>
+                            </label>
+                            <input [disabled]="key !== 'new'" maxlength="14" [(ngModel)]="empresa.cnpj" name="cnpj" type="text" class="form-control form-control-sm"
+                                required [ngClass]="{ 'is-invalid': cnpj.invalid && cnpj.touched,  'is-valid'  : !cnpj.invalid && cnpj.touched }"
+                                #cnpj="ngModel">
+                            <div *ngIf="cnpj.invalid && cnpj.touched" class="invalid-feedback">
+                                <div *ngIf="cnpj.errors && cnpj.errors.required">
+                                    Campo é obrigatório
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Razão Social
+                                <span class="label-obrg">*</span>
+                            </label>
+                            <input maxlength="100" [(ngModel)]="empresa.razaoSocial" name="razaoSocial" type="text" class="form-control form-control-sm"
+                                required [ngClass]="{ 'is-invalid': razaoSocial.invalid && razaoSocial.touched,  'is-valid'  : !razaoSocial.invalid && razaoSocial.touched }"
+                                #razaoSocial="ngModel">
+                            <div *ngIf="razaoSocial.invalid && razaoSocial.touched" class="invalid-feedback">
+                                <div *ngIf="razaoSocial.errors && razaoSocial.errors.required">
+                                    Campo é obrigatório
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="">Nome de Fantasia</label>
+                            <input maxlength="100" [(ngModel)]="empresa.nomeFantasia" name="nomeFantasia" type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+        <div class="text-right mt-4 mr-4">
+            <a class="btn btn-secondary btn-secondary-sm mr-2" [routerLink]="['../']">
+                <span class="fa fa-angle-left" aria-hidden="true">Voltar</span>
+            </a>
+            <button type="submit" [disabled]="!editForm.form.valid" class="btn btn-primary btn-primary-sm" [routerLink]="['./']">
+                Salvar
+            </button>
+        </div>
+    </form>
+</div>

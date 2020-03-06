@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../core/services/user.service';
+import { UserService } from '../../core/services/user/user.service';
 import { AuthService } from 'src/app/core/autentication/auth.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user/user.model';
@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   isSubmitted = false;
 
   public user: User;
+  public lista;
 
   constructor(
     private router: Router,
@@ -24,7 +25,9 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.userService.getUserByLogin(localStorage.getItem('USER'));
+    this.userService.getAll().subscribe(data => {
+      this.lista = data;
+    });
 
     if (!this.user) {
       this.router.navigateByUrl('/login');

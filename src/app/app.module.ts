@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -15,9 +16,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './core/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserService } from './core/services/user.service';
-import { AuthGuard } from './core/guards/auth.guard';
+import { UserService } from './core/services/user/user.service';
+import { EmpresasComponent } from './components/empresas/empresas.component';
+import { EmpresaEditComponent } from './components/empresas/edit/edit.component';
 import { CreateComponent } from './components/create/create.component';
+import { AuthGuard } from './core/guards/auth.guard';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { environment } from '../environments/environment';
@@ -31,7 +34,7 @@ const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: 'empresa'
   },
   {
     path: 'login',
@@ -44,6 +47,21 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'empresa',
+    component: EmpresasComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'empresa/:id',
+    component: EmpresaEditComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'empresa/new',
+    component: EmpresaEditComponent,
     canActivate: [AuthGuard]
   }
 ];
@@ -58,7 +76,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     HeaderComponent,
     DashboardComponent,
-    CreateComponent
+    CreateComponent,
+    EmpresasComponent,
+    EmpresaEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -66,6 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

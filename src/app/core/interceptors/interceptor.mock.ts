@@ -5,7 +5,7 @@ import * as users from '../../shared/mock/users.json';
 
 const urls = [
     {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'https://my-json-server.typicode.com/reinaldoleal/mv/boards',
         json: users
     }
 ];

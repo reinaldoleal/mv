@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../core/services/user.service';
+import { UserService } from '../../core/services/user/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -42,8 +42,8 @@ export class CreateComponent implements OnInit {
       return;
     }
 
-    if (this.userService.createUser(this.formUser.value)) {
-      this.router.navigateByUrl('/login');
-    }
+    this.userService.createUser(this.formUser.value).subscribe(data => {
+      console.log(data);
+    });
   }
 }
