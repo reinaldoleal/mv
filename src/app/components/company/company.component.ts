@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EmpresaService } from '../../core/services/empresa/empresa.service';
-import { Empresa } from 'src/app/shared/models/empresa/empresa.model';
+import { CompanyService } from '../../core/services/company/company.service';
+import { Company } from 'src/app/shared/models/company/company.model';
 import { TranslateService } from '@ngx-translate/core';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-empresas',
-  templateUrl: './empresas.component.html',
-  styleUrls: ['./empresas.component.css']
+  selector: 'app-company',
+  templateUrl: './company.component.html',
+  styleUrls: ['./company.component.css']
 })
-export class EmpresasComponent implements OnInit {
+export class CompanyComponent implements OnInit {
 
-  public empresas;
+  public companies;
 
   public buscarPorTipo = '';
   public buscarPorEstado =  '';
@@ -20,7 +19,7 @@ export class EmpresasComponent implements OnInit {
 
   constructor(
     private translateService: TranslateService,
-    private empresaService: EmpresaService
+    private companyService: CompanyService
   ) { }
 
   ngOnInit() {
@@ -28,25 +27,25 @@ export class EmpresasComponent implements OnInit {
   }
 
   public getAll() {
-    this.empresaService.getAll().subscribe(data => {
-      this.empresas = data;
+    this.companyService.getAll().subscribe(data => {
+      this.companies = data;
     });
   }
 
-  public deleteEmpresa(id: string) {
-    this.empresaService.deleteEmpresa(id).subscribe(data => {
+  public deleteCompany(id: string) {
+    this.companyService.deleteCompany(id).subscribe(data => {
       this.getAll();
     });
   }
 
-  public getEmpresasByFilter() {
+  public getCompaniesByFilter() {
     const parms = {
       uf: this.buscarPorEstado ? this.buscarPorEstado.toUpperCase() : this.buscarPorEstado,
       natJuridica: this.buscarPorTipo
     };
 
-    this.empresaService.getEmpresasByFilter(parms).subscribe(data => {
-      this.empresas = data as Empresa[];
+    this.companyService.getCompaniesByFilter(parms).subscribe(data => {
+      this.companies = data as Company[];
     });
   }
 
@@ -64,7 +63,7 @@ export class EmpresasComponent implements OnInit {
       focusCancel: true,
     }).then((result) => {
       if (result.value) {
-        this.empresaService.deleteEmpresa(id).subscribe(data => {
+        this.companyService.deleteCompany(id).subscribe(data => {
           swal.fire(
             this.translateService.instant('Excluido!'),
             this.translateService.instant('Seu item foi excluido com sucesso.'),

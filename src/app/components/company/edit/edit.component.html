@@ -1,4 +1,4 @@
-<div *ngIf="empresa">
+<div *ngIf="company">
     <div class="ml-2 mt-1 mr-2">
         <h1 class="page-header clearfix">
             <div class="form-row">
@@ -27,7 +27,7 @@
                                 <label for="">CNES
                                     <span class="label-obrg">*</span>
                                 </label>
-                                <input [disabled]="id !== 'new'" maxlength="14" [(ngModel)]="empresa.cnes" name="cnes" type="text" class="form-control form-control-sm"
+                                <input [disabled]="id !== 'new'" maxlength="14" [(ngModel)]="company.cnes" name="cnes" type="text" class="form-control form-control-sm"
                                     required [ngClass]="{ 'is-invalid': cnes.invalid && cnes.touched,  'is-valid'  : !cnes.invalid && cnes.touched }"
                                     #cnes="ngModel">
                                 <div *ngIf="cnes.invalid && cnes.touched" class="invalid-feedback">
@@ -40,7 +40,7 @@
                                 <label for="">{{ 'company name' | translate }}
                                     <span class="label-obrg">*</span>
                                 </label>
-                                <input maxlength="100" [(ngModel)]="empresa.noEmpresarial" name="noEmpresarial" type="text" class="form-control form-control-sm"
+                                <input maxlength="100" [(ngModel)]="company.noEmpresarial" name="noEmpresarial" type="text" class="form-control form-control-sm"
                                     required [ngClass]="{ 'is-invalid': noEmpresarial.invalid && noEmpresarial.touched,  'is-valid'  : !noEmpresarial.invalid && noEmpresarial.touched }"
                                     #noEmpresarial="ngModel">
                                 <div *ngIf="noEmpresarial.invalid && noEmpresarial.touched" class="invalid-feedback">
@@ -51,23 +51,23 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">{{ 'name of fantasy' | translate }}</label>
-                                <input maxlength="100" [(ngModel)]="empresa.noFantasia" name="noFantasia" type="text" class="form-control form-control-sm">
+                                <input maxlength="100" [(ngModel)]="company.noFantasia" name="noFantasia" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="">{{ 'type' | translate }}</label>
-                                <input maxlength="2" [(ngModel)]="empresa.natJuridica" name="natJuridica" type="number" class="form-control form-control-sm">
+                                <input maxlength="2" [(ngModel)]="company.natJuridica" name="natJuridica" type="number" class="form-control form-control-sm">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="">{{ 'state' | translate }}</label>
-                                <select class="form-control form-control-sm" [(ngModel)]="empresa.uf" name="uf">
+                                <select class="form-control form-control-sm" [(ngModel)]="company.uf" name="uf">
                                     <option *ngFor="let estado of estados" [value]="estado.sigla">{{estado.nome}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">{{ 'county name' | translate }}</label>
-                                <input maxlength="100" [(ngModel)]="empresa.noMunicipio" name="noMunicipio" type="text" class="form-control form-control-sm">
+                                <input maxlength="100" [(ngModel)]="company.noMunicipio" name="noMunicipio" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </ng-template>

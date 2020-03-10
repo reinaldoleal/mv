@@ -41,16 +41,16 @@
                     <th scope="col" class="w-2"></th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let empresa of empresas | paginate: { itemsPerPage: 20, currentPage: paginaAtual }; let i = index">
-                        <td class="text-nowrap">{{empresa.noEmpresarial}}</td>
-                        <td>{{empresa.cnes}}</td>
-                        <td>{{empresa.natJuridica}}</td>
-                        <td>{{empresa.uf}}</td>
+                    <tr *ngFor="let company of companies | paginate: { itemsPerPage: 20, currentPage: paginaAtual }; let i = index">
+                        <td class="text-nowrap">{{company.noEmpresarial}}</td>
+                        <td>{{company.cnes}}</td>
+                        <td>{{company.natJuridica}}</td>
+                        <td>{{company.uf}}</td>
                         <td class="pull-right mr-2">
-                            <a href="#" [routerLink]="['./', empresa.id]" routerLinkActive="active" class="text-secondary">
+                            <a href="#" [routerLink]="['./', company.id]" routerLinkActive="active" class="text-secondary">
                                 <span class="fa fa-pencil" aria-hidden="true"></span>
                             </a>
-                            <a href="#" [routerLink]="['./']" (click)="confirm(empresa.id)" class="text-secondary ml-2">
+                            <a href="#" [routerLink]="['./']" (click)="confirm(company.id)" class="text-secondary ml-2">
                                 <span class="fa fa-trash" aria-hidden="true"></span>
                             </a>
                         </td>

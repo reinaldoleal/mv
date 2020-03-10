@@ -5,7 +5,7 @@ import * as companies from '../../shared/mock/db.json';
 
 const urls = [
     {
-        url: 'http://localhost:3000/empresas',
+        url: 'http://localhost:8080',
         json: companies
     }
 ];

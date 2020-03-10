@@ -1,4 +1,4 @@
-export interface Empresa {
+export interface Company {
     'id': number;
     'cnes': string;
     'noFantasia': string;

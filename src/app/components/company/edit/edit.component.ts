@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Empresa } from 'src/app/shared/models/empresa/empresa.model';
-import { EmpresaService } from '../../../core/services/empresa/empresa.service';
+import { Company } from 'src/app/shared/models/company/company.model';
+import { CompanyService } from '../../../core/services/company/company.service';
 
 @Component({
-  selector: 'app-empresa-edit',
+  selector: 'app-company-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EmpresaEditComponent implements OnInit {
-  empresa: Empresa;
+export class CompanyEditComponent implements OnInit {
+  company: Company;
   id: any;
 
   estados = [
@@ -44,21 +44,21 @@ export class EmpresaEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private empresaService: EmpresaService
+    private companyService: CompanyService
   ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
 
     if (this.id !== 'new') {
-      this.empresaService.getEmpresa(this.id).subscribe(data => {
+      this.companyService.getCompany(this.id).subscribe(data => {
         if (data) {
-          this.empresa = data as Empresa;
+          this.company = data as Company;
         }
       });
     } else {
       // tslint:disable-next-line: new-parens
-      this.empresa = {
+      this.company = {
         id: 0,
         cnes: '',
         noFantasia: '',
@@ -74,11 +74,11 @@ export class EmpresaEditComponent implements OnInit {
 
   onSubmit() {
     if (this.id === 'new') {
-      this.empresaService.createEmpresa(this.empresa).subscribe(data => {
+      this.companyService.createCompany(this.company).subscribe(data => {
         console.log(data);
       });
     } else {
-      this.empresaService.updateEmpresa(this.empresa, this.id).subscribe(data => {
+      this.companyService.updateCompany(this.company, this.id).subscribe(data => {
         console.log(data);
       });
     }

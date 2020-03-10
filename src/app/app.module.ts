@@ -14,8 +14,8 @@ import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
-import { EmpresasComponent } from './components/empresas/empresas.component';
-import { EmpresaEditComponent } from './components/empresas/edit/edit.component';
+import { CompanyComponent } from './components/company/company.component';
+import { CompanyEditComponent } from './components/company/edit/edit.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { environment } from '../environments/environment';
@@ -31,19 +31,19 @@ const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'empresa'
+    redirectTo: 'company'
   },
   {
-    path: 'empresa',
-    component: EmpresasComponent
+    path: 'company',
+    component: CompanyComponent
   },
   {
-    path: 'empresa/:id',
-    component: EmpresaEditComponent
+    path: 'company/:id',
+    component: CompanyEditComponent
   },
   {
-    path: 'empresa/new',
-    component: EmpresaEditComponent
+    path: 'company/new',
+    component: CompanyEditComponent
   }
 ];
 
@@ -55,8 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HeaderComponent,
-    EmpresasComponent,
-    EmpresaEditComponent
+    CompanyComponent,
+    CompanyEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -75,6 +75,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
+  providers: [
+    {
+     provide: HTTP_INTERCEPTORS,
+     useClass: HttpRequestInterceptor,
+     multi: true,
+    },
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
