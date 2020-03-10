@@ -1,5 +1,6 @@
 {
     "cnes": "Registro nacional de establecimientos de salud",
+    "acronym for national registry of health facilities": "CNES",
     "company": "Empresa",
     "company name": "Razón Social",
     "name of fantasy": "Nombre de Fantasía",
@@ -30,5 +31,6 @@
     "invalid email or password": "Correo electrónico o contraseña no válidos",
     "yes": "Si",
     "no": "No",
-    "county name": "Nombre del condado"
+    "county name": "Nombre del condado",
+    "management": "Gestión"
 }

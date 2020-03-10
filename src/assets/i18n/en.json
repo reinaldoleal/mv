@@ -1,5 +1,6 @@
 {
     "cnes": "National Registry of Health Facilities",
+    "acronym for national registry of health facilities": "CNES",
     "company": "Company",
     "company name": "Company Name",
     "name of fantasy": "Name of Fantasy",
@@ -30,5 +31,6 @@
     "invalid email or password": "Invalid email or password",
     "yes": "Yes",
     "no": "No",
-    "county name": "County Name"
+    "county name": "County Name",
+    "management": "Management"
 }
