@@ -56,10 +56,6 @@ Start JSON Server
 
 Run `json-server --watch src/app/shared/mock/db.json`
 
-## API Documentation
-
-[API Documentation in Swagger](https://app.swaggerhub.com/apis-docs/reinaldoleal_mv/swagger-cnes/1.0.0)
-
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
