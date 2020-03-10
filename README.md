@@ -58,7 +58,7 @@ Run `json-server --watch src/app/shared/mock/db.json`
 
 ## API Documentation
 
-[API Documentation in Swagger](https://app.swaggerhub.com/apis/reinaldoleal_mv/swagger-cnes/1.0.0)
+[API Documentation in Swagger](https://app.swaggerhub.com/apis-docs/reinaldoleal_mv/swagger-cnes/1.0.0)
 
 ## Further help
 

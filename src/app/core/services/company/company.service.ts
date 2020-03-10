@@ -20,7 +20,7 @@ export class CompanyService {
   }
 
   public getCompaniesByFilter(params) {
-    let filter;
+    let filter = '';
 
     if (params.uf) {
       filter = 'uf=' + params.uf;
