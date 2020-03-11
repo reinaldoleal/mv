@@ -28,21 +28,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-# JSON Server [![](https://travis-ci.org/typicode/json-server.svg?branch=master)](https://travis-ci.org/typicode/json-server) [![](https://badge.fury.io/js/json-server.svg)](http://badge.fury.io/js/json-server)
+## Attention
 
-Get a full fake REST API with __zero coding__ in __less than 30 seconds__ (seriously)
+To run the application developed using the Angular framework it is necessary that the computer has NodeJS installed
 
-Created with <3 for front-end developers who need a quick back-end for prototyping and mocking.
-
-* [Egghead.io free video tutorial - Creating demo APIs with json-server](https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server)
-* [JSONPlaceholder - Live running version](https://jsonplaceholder.typicode.com)
-* [__My JSON Server__ - no installation required, use your own data](https://my-json-server.typicode.com)
-
-See also:
-* :dog: [husky - Git hooks made easy](https://github.com/typicode/husky)
-* :hotel: [hotel - developer tool with local .localhost domain and https out of the box](https://github.com/typicode/hotel)
-
-## Getting started
+# Database Mock Service
 
 ## Install JSON Server globally
 
