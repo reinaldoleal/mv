@@ -27,7 +27,7 @@
                                 <label for="">{{ 'acronym for national registry of health facilities' | translate }}
                                     <span class="label-obrg">*</span>
                                 </label>
-                                <input [disabled]="id !== 'new'" maxlength="14" [(ngModel)]="company.cnes" name="cnes" type="text" class="form-control form-control-sm"
+                                <input [disabled]="id !== 'new'" maxlength="7" [(ngModel)]="company.co_cnes" name="cnes" type="number" class="form-control form-control-sm"
                                     required [ngClass]="{ 'is-invalid': cnes.invalid && cnes.touched, 'is-valid': !cnes.invalid && cnes.touched }"
                                     #cnes="ngModel">
                                 <div *ngIf="cnes.invalid && cnes.touched" class="invalid-feedback">
@@ -36,28 +36,107 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="">{{ 'company name' | translate }}
+                            <div class="form-group col-md-5">
+                                <label for="">{{ 'name of fantasy' | translate }}
                                     <span class="label-obrg">*</span>
                                 </label>
-                                <input maxlength="100" [(ngModel)]="company.noEmpresarial" name="noEmpresarial" type="text" class="form-control form-control-sm"
-                                    required [ngClass]="{ 'is-invalid': noEmpresarial.invalid && noEmpresarial.touched, 'is-valid': !noEmpresarial.invalid && noEmpresarial.touched }"
-                                    #noEmpresarial="ngModel">
-                                <div *ngIf="noEmpresarial.invalid && noEmpresarial.touched" class="invalid-feedback">
-                                    <div *ngIf="noEmpresarial.errors && noEmpresarial.errors.required">
+                                <input maxlength="100" [(ngModel)]="company.no_fantasia" name="noFantasia" type="text" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': noFantasia.invalid && noFantasia.touched, 'is-valid': !noFantasia.invalid && noFantasia.touched }"
+                                    #noFantasia="ngModel">
+                                <div *ngIf="noFantasia.invalid && noFantasia.touched" class="invalid-feedback">
+                                    <div *ngIf="noFantasia.errors && noFantasia.errors.required">
                                         {{ 'the field is required' | translate }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="">{{ 'name of fantasy' | translate }}</label>
-                                <input maxlength="100" [(ngModel)]="company.noFantasia" name="noFantasia" type="text" class="form-control form-control-sm">
+                            <div class="form-group col-md-5">
+                                <label for="">{{ 'unit type' | translate }}</label>
+                                <input maxlength="100" [(ngModel)]="company.ds_tipo_unidade" name="dtTipoUnidade" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
-                                <label for="">{{ 'type' | translate }}</label>
-                                <input maxlength="2" [(ngModel)]="company.natJuridica" name="natJuridica" type="number" class="form-control form-control-sm">
+                                <label for="">{{ 'management' | translate }}
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <select class="form-control form-control-sm" [(ngModel)]="company.tp_gestao" name="tpGestao"
+                                    required [ngClass]="{ 'is-invalid': tpGestao.invalid && tpGestao.touched, 'is-valid': !tpGestao.invalid && tpGestao.touched }"
+                                    #tpGestao="ngModel">
+                                    <option *ngFor="let tipo of tipos" [value]="tipo.sigla">{{tipo.nome}}</option>
+                                </select>
+                                <div *ngIf="tpGestao.invalid && tpGestao.touched" class="invalid-feedback">
+                                    <div *ngIf="tpGestao.errors && tpGestao.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">{{ 'telephone' | translate }}</label>
+                                <input maxlength="20" [(ngModel)]="company.nu_telefone" name="nuTelefone" type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+            <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false">
+                <ngb-panel id="toggle-2">
+                    <ng-template ngbPanelTitle>
+                        {{ 'address' | translate }} 
+                        <span class="label-obrg">*</span>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="">{{ 'public place' | translate }}
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <input maxlength="100" [(ngModel)]="company.no_logradouro" name="logradouro" type="text" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': logradouro.invalid && logradouro.touched, 'is-valid': !logradouro.invalid && logradouro.touched }"
+                                    #logradouro="ngModel">
+                                <div *ngIf="logradouro.invalid && logradouro.touched" class="invalid-feedback">
+                                    <div *ngIf="logradouro.errors && logradouro.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-1">
+                                <label for="">{{ 'number' | translate }}
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <input maxlength="10" [(ngModel)]="company.nu_endereco" name="nuEndereco" type="text" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': nuEndereco.invalid && nuEndereco.touched, 'is-valid': !nuEndereco.invalid && nuEndereco.touched }"
+                                    #nuEndereco="ngModel">
+                                <div *ngIf="nuEndereco.invalid && nuEndereco.touched" class="invalid-feedback">
+                                    <div *ngIf="nuEndereco.errors && nuEndereco.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="">{{ 'neighborhood' | translate }}
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <input maxlength="100" [(ngModel)]="company.no_bairro" name="noBairro" type="text" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': noBairro.invalid && noBairro.touched, 'is-valid': !noBairro.invalid && noBairro.touched }"
+                                    #noBairro="ngModel">
+                                <div *ngIf="noBairro.invalid && noBairro.touched" class="invalid-feedback">
+                                    <div *ngIf="noBairro.errors && noBairro.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="">{{ 'county name' | translate }}
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <input maxlength="100" [(ngModel)]="company.municipio" name="noMunicipio" type="text" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': noMunicipio.invalid && noMunicipio.touched, 'is-valid': !noMunicipio.invalid && noMunicipio.touched }"
+                                    #noMunicipio="ngModel">
+                                <div *ngIf="noMunicipio.invalid && noMunicipio.touched" class="invalid-feedback">
+                                    <div *ngIf="noMunicipio.errors && noMunicipio.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="">{{ 'state' | translate }}
@@ -74,22 +153,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="">{{ 'county name' | translate }}
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="">{{ 'zip code' | translate }}
                                     <span class="label-obrg">*</span>
                                 </label>
-                                <input maxlength="100" [(ngModel)]="company.noMunicipio" name="noMunicipio" type="text" class="form-control form-control-sm"
-                                    required [ngClass]="{ 'is-invalid': noMunicipio.invalid && noMunicipio.touched, 'is-valid': !noMunicipio.invalid && noMunicipio.touched }"
-                                    #noMunicipio="ngModel">
-                                <div *ngIf="noMunicipio.invalid && noMunicipio.touched" class="invalid-feedback">
-                                    <div *ngIf="noMunicipio.errors && noMunicipio.errors.required">
+                                <input maxlength="8" [(ngModel)]="company.co_cep" name="cep" type="number" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': cep.invalid && cep.touched, 'is-valid': !cep.invalid && cep.touched }"
+                                    #cep="ngModel">
+                                <div *ngIf="cep.invalid && cep.touched" class="invalid-feedback">
+                                    <div *ngIf="cep.errors && cep.errors.required">
                                         {{ 'the field is required' | translate }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="">{{ 'management' | translate }}</label>
-                                <input maxlength="7" [(ngModel)]="company.gestao" name="gestao" type="text" class="form-control form-control-sm">
+                            <div class="form-group col-md-2">
+                                <label for="">{{ 'ibge code' | translate }}
+                                    <span class="label-obrg">*</span>
+                                </label>
+                                <input maxlength="7" [(ngModel)]="company.co_ibge" name="ibge" type="number" class="form-control form-control-sm"
+                                    required [ngClass]="{ 'is-invalid': ibge.invalid && ibge.touched, 'is-valid': !ibge.invalid && ibge.touched }"
+                                    #ibge="ngModel">
+                                <div *ngIf="ibge.invalid && ibge.touched" class="invalid-feedback">
+                                    <div *ngIf="ibge.errors && ibge.errors.required">
+                                        {{ 'the field is required' | translate }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </ng-template>

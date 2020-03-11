@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     component: CompanyComponent
   },
   {
-    path: 'company/:id',
+    path: 'company/:cnes',
     component: CompanyEditComponent
   },
   {

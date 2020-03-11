@@ -13,6 +13,44 @@ export class CompanyComponent implements OnInit {
 
   public companies;
 
+  estados = [
+    {nome: 'Selecione o Estado', sigla: ''},
+    {nome: 'Acre', sigla: 'AC'},
+    {nome: 'Alagoas', sigla: 'AL'},
+    {nome: 'Amapá', sigla: 'AP'},
+    {nome: 'Amazonas', sigla: 'AM'},
+    {nome: 'Bahia', sigla: 'BA'},
+    {nome: 'Ceará', sigla: 'CE'},
+    {nome: 'Distrito Federal', sigla: 'DF'},
+    {nome: 'Espírito Santo', sigla: 'ES'},
+    {nome: 'Goiás', sigla: 'GO'},
+    {nome: 'Maranhão', sigla: 'MA'},
+    {nome: 'Mato Grosso', sigla: 'MT'},
+    {nome: 'Mato Grosso do Sul', sigla: 'MS'},
+    {nome: 'Minas Gerais', sigla: 'MG'},
+    {nome: 'Pará', sigla: 'PA'},
+    {nome: 'Paraíba', sigla: 'PB'},
+    {nome: 'Paraná', sigla: 'PR'},
+    {nome: 'Pernambuco', sigla: 'PE'},
+    {nome: 'Piauí', sigla: 'PI'},
+    {nome: 'Rio de Janeiro', sigla: 'RJ'},
+    {nome: 'Rio Grande do Norte', sigla: 'RN'},
+    {nome: 'Rio Grande do Sul', sigla: 'RS'},
+    {nome: 'Rondônia', sigla: 'RO'},
+    {nome: 'Roraima', sigla: 'RR'},
+    {nome: 'Santa Catarina', sigla: 'SC'},
+    {nome: 'São Paulo', sigla: 'SP'},
+    {nome: 'Sergipe', sigla: 'SE'},
+    {nome: 'Tocantins', sigla: 'TO'}
+  ];
+
+  public tipos = [
+    {nome: 'Selecione o Tipo', sigla: ''},
+    {nome: 'ESTADUAL', sigla: 'E'},
+    {nome: 'MUNICIPAL', sigla: 'M'},
+    {nome: 'FEDERAL', sigla: 'F'}
+  ];
+
   public buscarPorTipo = '';
   public buscarPorEstado =  '';
   public paginaAtual = 1;
@@ -32,16 +70,16 @@ export class CompanyComponent implements OnInit {
     });
   }
 
-  public deleteCompany(id: string) {
-    this.companyService.deleteCompany(id).subscribe(data => {
+  public deleteCompany(cnes: string) {
+    this.companyService.deleteCompany(cnes).subscribe(data => {
       this.getAll();
     });
   }
 
   public getCompaniesByFilter() {
     const parms = {
-      uf: this.buscarPorEstado ? this.buscarPorEstado.toUpperCase() : this.buscarPorEstado,
-      natJuridica: this.buscarPorTipo
+      uf: this.buscarPorEstado ? this.buscarPorEstado.toUpperCase() : undefined,
+      tp_gestao: this.buscarPorTipo ? this.buscarPorTipo.toUpperCase() : undefined
     };
 
     this.companyService.getCompaniesByFilter(parms).subscribe(data => {
@@ -49,7 +87,7 @@ export class CompanyComponent implements OnInit {
     });
   }
 
-  public confirm(id) {
+  public confirm(cnes) {
     swal.fire({
       title: this.translateService.instant('Exclusão do Item'),
       text: this.translateService.instant('Confirma a exclusão do item selecionado?'),
@@ -63,7 +101,7 @@ export class CompanyComponent implements OnInit {
       focusCancel: true,
     }).then((result) => {
       if (result.value) {
-        this.companyService.deleteCompany(id).subscribe(data => {
+        this.companyService.deleteCompany(cnes).subscribe(data => {
           swal.fire(
             this.translateService.instant('Excluido!'),
             this.translateService.instant('Seu item foi excluido com sucesso.'),

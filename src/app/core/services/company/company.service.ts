@@ -15,8 +15,8 @@ export class CompanyService {
     return this.http.get('/api/company');
   }
 
-  public getCompany(id: string) {
-    return this.http.get('/api/company/' + id);
+  public getCompany(cnes: string) {
+    return this.http.get('/api/company/' + cnes);
   }
 
   public getCompaniesByFilter(params) {
@@ -26,12 +26,12 @@ export class CompanyService {
       filter = 'uf=' + params.uf;
     }
 
-    if (params.natJuridica) {
+    if (params.tp_gestao) {
       if (filter !== '') {
         filter = filter + '&';
       }
 
-      filter = filter + 'natJuridica=' + params.natJuridica;
+      filter = filter + 'tp_gestao=' + params.tp_gestao;
     }
 
     if (filter) {
@@ -42,14 +42,16 @@ export class CompanyService {
   }
 
   public createCompany(company: Company) {
+    company.id = company.co_cnes;
+
     return this.http.post('/api/company', company);
   }
 
-  public updateCompany(company: Company, key: string) {
-    return this.http.put('/api/company/' + company.id, company);
+  public updateCompany(company: Company) {
+    return this.http.put('/api/company/' + company.co_cnes, company);
   }
 
-  public deleteCompany(id: string) {
-    return this.http.delete('/api/company/' + id);
+  public deleteCompany(cnes: string) {
+    return this.http.delete('/api/company/' + cnes);
   }
 }

@@ -20,10 +20,14 @@
                     <label for="">{{ 'filter by' | translate }}:</label>
                 </div>
                 <div class="col-sm-2">
-                    <input maxlength="2" type="number" [(ngModel)]="buscarPorTipo" name="buscarPorTipo" class="form-control form-control-sm" placeholder="{{ 'type' | translate}}">
+                    <select class="form-control form-control-sm" [(ngModel)]="buscarPorTipo" name="buscarPorTipo">
+                        <option *ngFor="let tipo of tipos" [value]="tipo.sigla">{{tipo.nome}}</option>
+                    </select>
                 </div>
                 <div class="col-sm-2">
-                    <input maxlength="2" type="text" [(ngModel)]="buscarPorEstado" name="buscarPorEstado" class="form-control form-control-sm" placeholder="{{ 'state' | translate }}">
+                    <select class="form-control form-control-sm" [(ngModel)]="buscarPorEstado" name="buscarPorEstado">
+                        <option *ngFor="let estado of estados" [value]="estado.sigla">{{estado.nome}}</option>
+                    </select>
                 </div>
                 <div class="col-sm-2 offset-sm-5 text-right">
                     <button type="buttton" (click)="getCompaniesByFilter()" class="btn btn-primary btn-primary-sm">
@@ -34,23 +38,25 @@
         <div class="table-responsive">
             <table class="table table-hover table-responsive-md">
                 <thead class="">
-                    <th scope="col" class="text-nowrap">{{ 'company name' | translate }}</th>
                     <th scope="col">{{ 'acronym for national registry of health facilities' | translate }}</th>
-                    <th scope="col">{{ 'type' | translate }}</th>
+                    <th scope="col" class="text-nowrap">{{ 'name of fantasy' | translate }}</th>
+                    <th scope="col">{{ 'management' | translate }}</th>
                     <th scope="col">{{ 'state' | translate }}</th>
+                    <th scope="col" class="text-nowrap">{{ 'county name' | translate }}</th>
                     <th scope="col" class="w-2"></th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let company of companies | paginate: { itemsPerPage: 20, currentPage: paginaAtual }; let i = index">
-                        <td class="text-nowrap">{{company.noEmpresarial}}</td>
-                        <td>{{company.cnes}}</td>
-                        <td>{{company.natJuridica}}</td>
+                        <td>{{company.co_cnes}}</td>
+                        <td class="text-nowrap">{{company.no_fantasia}}</td>
+                        <td>{{company.tp_gestao}}</td>
                         <td>{{company.uf}}</td>
-                        <td class="pull-right mr-2">
-                            <a href="#" [routerLink]="['./', company.id]" routerLinkActive="active" class="text-secondary">
+                        <td class="text-nowrap">{{company.municipio}}</td>
+                        <td class="pull-right mr-2 text-nowrap">
+                            <a href="#" [routerLink]="['./', company.co_cnes]" routerLinkActive="active" class="text-secondary">
                                 <span class="fa fa-pencil" aria-hidden="true"></span>
                             </a>
-                            <a href="#" [routerLink]="['./']" (click)="confirm(company.id)" class="text-secondary ml-2">
+                            <a href="#" [routerLink]="['./']" (click)="confirm(company.co_cnes)" class="text-secondary ml-2">
                                 <span class="fa fa-trash" aria-hidden="true"></span>
                             </a>
                         </td>

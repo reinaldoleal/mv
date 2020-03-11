@@ -32,5 +32,13 @@
     "yes": "Si",
     "no": "No",
     "county name": "Nombre del condado",
-    "management": "Gestión"
+    "management": "Gestión",
+    "ibge code": "Codigo IBGE",
+    "address": "Dirección",
+    "unit type": "tipo de unidad",
+    "public place": "Dirección",
+    "number": "Numero",
+    "telephone": "Telefono",
+    "neighborhood": "Barrio",
+    "zip code": "Código Postal"
 }

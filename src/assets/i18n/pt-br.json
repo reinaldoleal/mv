@@ -32,5 +32,13 @@
     "yes": "Sim",
     "no": "Não",
     "county name": "Nome do Município",
-    "management": "Gestão"
+    "management": "Gestão",
+    "ibge code": "Código IBGE",
+    "address": "Endereço",
+    "unit type": "Tipo de Unidade",
+    "public place": "Logradouro",
+    "number": "Número",
+    "telephone": "Telefone",
+    "neighborhood": "Bairro",
+    "zip code": "CEP"
 }

@@ -32,5 +32,13 @@
     "yes": "Yes",
     "no": "No",
     "county name": "County Name",
-    "management": "Management"
+    "management": "Management",
+    "ibge code": "IBGE Code",
+    "address": "Address",
+    "unit type": "Unit Type",
+    "public place": "Public place",
+    "number": "Number",
+    "telephone": "Telephone",
+    "neighborhood": "Neighborhood",
+    "zip code": "Zip Code"
 }

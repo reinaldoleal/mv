@@ -10,7 +10,7 @@ import { CompanyService } from '../../../core/services/company/company.service';
 })
 export class CompanyEditComponent implements OnInit {
   company: Company;
-  id: any;
+  cnes: any;
 
   estados = [
     {nome: 'Acre', sigla: 'AC'},
@@ -42,43 +42,52 @@ export class CompanyEditComponent implements OnInit {
     {nome: 'Tocantins', sigla: 'TO'}
   ];
 
+  public tipos = [
+    {nome: 'ESTADUAL', sigla: 'E'},
+    {nome: 'MUNICIPAL', sigla: 'M'},
+    {nome: 'FEDERAL', sigla: 'F'}
+  ];
+
   constructor(
     private route: ActivatedRoute,
     private companyService: CompanyService
   ) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
+    this.cnes = this.route.snapshot.params.cnes;
 
-    if (this.id !== 'new') {
-      this.companyService.getCompany(this.id).subscribe(data => {
+    if (this.cnes !== 'new') {
+      this.companyService.getCompany(this.cnes).subscribe(data => {
         if (data) {
           this.company = data as Company;
         }
       });
     } else {
-      // tslint:disable-next-line: new-parens
       this.company = {
-        id: 0,
-        cnes: '',
-        noFantasia: '',
-        noEmpresarial: '',
+        id: null,
+        co_cnes: null,
+        co_ibge: null,
+        no_fantasia: '',
+        ds_tipo_unidade: '',
+        tp_gestao: '',
+        no_logradouro: '',
+        nu_endereco: '',
+        no_bairro: '',
+        co_cep: null,
         uf: '',
-        noMunicipio: '',
-        gestao: '',
-        natJuridica: 0,
-        atendeSus: ''
+        municipio: '',
+        nu_telefone: ''
       };
     }
   }
 
   onSubmit() {
-    if (this.id === 'new') {
+    if (this.cnes === 'new') {
       this.companyService.createCompany(this.company).subscribe(data => {
         console.log(data);
       });
     } else {
-      this.companyService.updateCompany(this.company, this.id).subscribe(data => {
+      this.companyService.updateCompany(this.company).subscribe(data => {
         console.log(data);
       });
     }
