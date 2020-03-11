@@ -48,6 +48,8 @@ Start JSON Server
 
 Run `json-server --watch src/app/shared/mock/db.json`
 
+# Attention: Before running the CNESApp application, it is necessary that the Webservice CnesApi is running
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
