@@ -48,7 +48,9 @@ Start JSON Server
 
 Run `json-server --watch src/app/shared/mock/db.json`
 
-# Attention: Before running the CNESApp application, it is necessary that the Webservice CnesApi is running
+# Attention
+
+## Before running the CNESApp application, it is necessary that the Webservice CnesApi is running
 
 ## Further help
 
