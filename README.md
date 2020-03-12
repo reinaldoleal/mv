@@ -42,7 +42,7 @@ Install JSON Server
 
 Run `npm install -g json-server`
 
-Start JSON Server
+## Start JSON Server
 
 ## Running in the application folder
 
