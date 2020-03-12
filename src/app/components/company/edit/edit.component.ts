@@ -10,7 +10,7 @@ import { CompanyService } from '../../../core/services/company/company.service';
 })
 export class CompanyEditComponent implements OnInit {
   company: Company;
-  cnes: any;
+  public id: any;
 
   estados = [
     {nome: 'Acre', sigla: 'AC'},
@@ -54,10 +54,10 @@ export class CompanyEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cnes = this.route.snapshot.params.cnes;
+    this.id = this.route.snapshot.params.cnes;
 
-    if (this.cnes !== 'new') {
-      this.companyService.getCompany(this.cnes).subscribe(data => {
+    if (this.id !== 'new') {
+      this.companyService.getCompany(this.id).subscribe(data => {
         if (data) {
           this.company = data as Company;
         }
@@ -82,7 +82,7 @@ export class CompanyEditComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.cnes === 'new') {
+    if (this.id === 'new') {
       this.companyService.createCompany(this.company).subscribe(data => {
         console.log(data);
       });
