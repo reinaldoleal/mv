@@ -5,6 +5,9 @@
     "company name": "Company Name",
     "name of fantasy": "Name of Fantasy",
     "add": "Add",
+    "added": "Added",
+    "update": "Update",
+    "updated": "Updated",
     "filter": "Filter",
     "filter by": "Filter by",
     "the field is required": "The field is required",
@@ -40,5 +43,9 @@
     "number": "Number",
     "telephone": "Telephone",
     "neighborhood": "Neighborhood",
-    "zip code": "Zip Code"
+    "zip code": "Zip Code",
+    "the company was successfully included": "The company was successfully included",
+    "successfully changed data": "Successfully changed data",
+    "do you confirm to the company": "Do you confirm to the company?",
+    "do you confirm the company change": "Do you confirm the company change?"
 }

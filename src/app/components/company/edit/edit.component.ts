@@ -84,22 +84,10 @@ export class CompanyEditComponent implements OnInit {
     }
   }
 
-  // onSubmit() {
-  //   if (this.id === 'new') {
-  //     this.companyService.createCompany(this.company).subscribe(data => {
-  //       console.log(data);
-  //     });
-  //   } else {
-  //     this.companyService.updateCompany(this.company).subscribe(data => {
-  //       console.log(data);
-  //     });
-  //   }
-  // }
-
-  public confirm() {
+  public onSubmit() {
     swal.fire({
-      title: this.translateService.instant(this.id === 'new' ? 'Inclusão' : 'Alteração'),
-      text: this.translateService.instant(this.id === 'new' ? 'Confirma a inclusão da empressa?' : 'Confirma a alteração da empressa?'),
+      title: this.translateService.instant(this.id === 'new' ? 'add' : 'update'),
+      text: this.translateService.instant(this.id === 'new' ? 'do you confirm to the company' : 'do you confirm the company change'),
       icon: 'warning',
       allowOutsideClick: false,
       showCancelButton: true,
@@ -113,16 +101,16 @@ export class CompanyEditComponent implements OnInit {
         if (this.id === 'new') {
           this.companyService.createCompany(this.company).subscribe(data => {
             swal.fire(
-              this.translateService.instant('Incluído!'),
-              this.translateService.instant('A empresa foi incluída com sucesso.'),
+              this.translateService.instant('added'),
+              this.translateService.instant('the company was successfully included'),
               'success'
             );
           });
         } else {
           this.companyService.updateCompany(this.company).subscribe(data => {
             swal.fire(
-              this.translateService.instant('Alterado!'),
-              this.translateService.instant('Os dados da empresa foram alterados com sucesso.'),
+              this.translateService.instant('updated'),
+              this.translateService.instant('successfully changed data'),
               'success'
             );
           });

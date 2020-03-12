@@ -5,6 +5,9 @@
     "company name": "Razão Social",
     "name of fantasy": "Nome de Fantasia",
     "add": "Adicionar",
+    "added": "Adicionado",
+    "update": "Alterar",
+    "updated": "Altedado",
     "filter": "Filtrar",
     "filter by": "Filtrar por",
     "the field is required": "O campo é obrigatório",
@@ -40,5 +43,9 @@
     "number": "Número",
     "telephone": "Telefone",
     "neighborhood": "Bairro",
-    "zip code": "CEP"
+    "zip code": "CEP",
+    "the company was successfully included": "A empresa foi incluída com sucesso",
+    "successfully changed data": "Dados alterados com sucesso",
+    "do you confirm to the company": "Confirma a inclusão da empressa?",
+    "do you confirm the company change": "Confirma a alteração da empressa?"
 }

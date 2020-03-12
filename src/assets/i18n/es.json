@@ -5,6 +5,9 @@
     "company name": "Razón Social",
     "name of fantasy": "Nombre de Fantasía",
     "add": "Añadir",
+    "added": "Agregada",
+    "update": "Cambio",
+    "updated": "Actualizada",
     "filter": "Filtro",
     "filter by": "Filtrar por",
     "the field is required": "El campo es obligatorio",
@@ -35,10 +38,14 @@
     "management": "Gestión",
     "ibge code": "Codigo IBGE",
     "address": "Dirección",
-    "unit type": "tipo de unidad",
+    "unit type": "Tipo de unidad",
     "public place": "Dirección",
     "number": "Numero",
     "telephone": "Telefono",
     "neighborhood": "Barrio",
-    "zip code": "Código Postal"
+    "zip code": "Código Postal",
+    "the company was successfully included": "La empresa fue incluida con éxito",
+    "successfully changed data": "Los datos cambiaron exitosamente",
+    "do you confirm to the company": "¿Confirma la inclusión de la empresa?",
+    "do you confirm the company change": "¿Confirma el cambio de empresa?"
 }
