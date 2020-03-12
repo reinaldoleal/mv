@@ -14,7 +14,7 @@
         </h1>
     </div>
     <div class="mt-2">
-        <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+        <form #editForm="ngForm" (ngSubmit)="confirm()">
             <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false" activeIds="toggle-1">
                 <ngb-panel id="toggle-1">
                     <ng-template ngbPanelTitle>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from 'src/app/shared/models/company/company.model';
 import { CompanyService } from '../../../core/services/company/company.service';
+import { TranslateService } from '@ngx-translate/core';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-company-edit',
@@ -49,6 +51,7 @@ export class CompanyEditComponent implements OnInit {
   ];
 
   constructor(
+    private translateService: TranslateService,
     private route: ActivatedRoute,
     private companyService: CompanyService
   ) { }
@@ -81,15 +84,51 @@ export class CompanyEditComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    if (this.id === 'new') {
-      this.companyService.createCompany(this.company).subscribe(data => {
-        console.log(data);
-      });
-    } else {
-      this.companyService.updateCompany(this.company).subscribe(data => {
-        console.log(data);
-      });
-    }
+  // onSubmit() {
+  //   if (this.id === 'new') {
+  //     this.companyService.createCompany(this.company).subscribe(data => {
+  //       console.log(data);
+  //     });
+  //   } else {
+  //     this.companyService.updateCompany(this.company).subscribe(data => {
+  //       console.log(data);
+  //     });
+  //   }
+  // }
+
+  public confirm() {
+    swal.fire({
+      title: this.translateService.instant(this.id === 'new' ? 'Inclusão' : 'Alteração'),
+      text: this.translateService.instant(this.id === 'new' ? 'Confirma a inclusão da empressa?' : 'Confirma a alteração da empressa?'),
+      icon: 'warning',
+      allowOutsideClick: false,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: this.translateService.instant('yes'),
+      cancelButtonColor: '#d33',
+      cancelButtonText: this.translateService.instant('no'),
+      focusCancel: true,
+    }).then((result) => {
+      if (result.value) {
+        if (this.id === 'new') {
+          this.companyService.createCompany(this.company).subscribe(data => {
+            swal.fire(
+              this.translateService.instant('Incluído!'),
+              this.translateService.instant('A empresa foi incluída com sucesso.'),
+              'success'
+            );
+          });
+        } else {
+          this.companyService.updateCompany(this.company).subscribe(data => {
+            swal.fire(
+              this.translateService.instant('Alterado!'),
+              this.translateService.instant('Os dados da empresa foram alterados com sucesso.'),
+              'success'
+            );
+          });
+        }
+      }
+    });
   }
+
 }
